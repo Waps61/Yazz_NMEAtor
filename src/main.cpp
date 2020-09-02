@@ -138,7 +138,7 @@ Credit:
 
 #define VESSEL_NAME "YAZZ"
 #define PROGRAM_NAME "NMEAtor"
-#define PROGRAM_VERSION "1.03"
+#define PROGRAM_VERSION "1.04"
 
 #define SAMPLERATE 115200
 
