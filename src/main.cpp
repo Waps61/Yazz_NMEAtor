@@ -3,10 +3,12 @@
   Project:  Yazz_Multiplexer.ino, Copyright 2020, Roy Wassili
   Contact:  waps61 @gmail.com
   URL:      https://www.hackster.io/waps61
-  VERSION:  1.04
+  VERSION:  1.05
   Date:     30-04-2020
   Last
-  Update:   02-09-2020 v.104
+  Update:   18-04-2021 v1.05
+            Fixed a bug in the ft -> m calculation in the depth calculation
+            02-09-2020 v.104
             fixed a bug in DPT sentence
             09-08-2020 v 1.03
             TZ iBoat app does not recognize DBT so changed to DPT
@@ -138,7 +140,7 @@ Credit:
 
 #define VESSEL_NAME "YAZZ"
 #define PROGRAM_NAME "NMEAtor"
-#define PROGRAM_VERSION "1.04"
+#define PROGRAM_VERSION "1.05"
 
 #define SAMPLERATE 115200
 
@@ -821,7 +823,7 @@ NMEAData NMEAParser::nmeaSpecialty( NMEAData nmeaIn )
       nmeaOut.fields[0]="$AODPT";
       if(nmeaIn.fields[3]=="f"){
         //depth in feet need to be converted
-        float ft = nmeaIn.fields[3].toFloat();
+        float ft = nmeaIn.fields[2].toFloat();
         nmeaOut.fields[1]=String( ft * FTM, 1);
       } else nmeaOut.fields[1]=nmeaIn.fields[2];
       nmeaOut.fields[2]="0.0";
